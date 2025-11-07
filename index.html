@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FIELD & CO. — Secondhand Supply</title>
+<link rel="stylesheet" href="css/style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* 🔹 검색 오버레이 스타일 */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 150px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-box {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 15px 60px 15px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-family: "Pretendard", sans-serif;
+}
+
+.search-box button {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.search-box button:hover {
+  color: #000;
+}
+</style>
+</head>
+<body>
+  <!-- 공지 배너 -->
+<div class="announcement-bar">
+  <div class="scroll-text">
+    🚚 Free shipping over ₩50,000 · 10% off for new members · Vintage outfit update now ✨
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="container">
+    <a class="nav-logo" href="index.html">
+      <img src="images/field-logo.png" alt="FIELD & CO. Logo" class="logo-img">
+    </a>
+
+    <nav class="nav-links">
+      <a href="all.html">All</a>
+      <a href="jacket.html">Jacket</a>
+      <a href="shirt.html">Shirt</a>
+      <a href="pants.html">Pants</a>
+      <a href="gear.html">Gear</a>
+
+      <!-- 오른쪽 기능 아이콘 -->
+      <div class="nav-actions">
+      <a href="cart.html" class="cart-btn">
+        <img src="images/icon-cart.svg" alt="Cart" />
+      </a>
+    </div>
+  </div>
+</header>
+
+
+<main>
+  <section class="hero">
+  <!-- 비디오 배경 -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="images/field_hero.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay">
+    <h1 class="hero-title">Reused. Refined. Real.</h1>
+    <p class="hero-sub">Authentic Military & Workwear Since 2024</p>
+    <a class="btn ripple" href="all.html">SHOP NOW</a>
+  </div>
+</section>
+
+
+</main>
+
+<!-- NEW ARRIVALS -->
+<section class="new-arrivals container">
+  <h2>New Arrivals</h2>
+  <div class="products">
+
+    <!-- Jacket -->
+    <a href="product-detail.html?id=1" class="product-card">
+      <img src="images/jacket_taxi.jpg" alt="M-65 Field Jacket">
+      <h3>90s. taxi driver m65 jacket</h3>
+      <p>₩189,000</p>
+    </a>
+
+    <!-- Shirt -->
+    <a href="product-detail.html?id=3" class="product-card">
+      <img src="images/shirt_patch.jpg" alt="Polo Patchwork Shirt">
+      <h3>Polo Patchwork Shirt</h3>
+      <p>₩69,000</p>
+    </a>
+
+    <!-- Pants -->
+    <a href="product-detail.html?id=5" class="product-card">
+      <img src="images/pants_slacks.jpg" alt="POLO RALPH LAUREN BEIGE SLACKS">
+      <h3>POLO RALPH LAUREN BEIGE SLACKS</h3>
+      <p>₩69,000</p>
+    </a>
+
+    <!-- Gear -->
+    <a href="product-detail.html?id=7" class="product-card">
+      <img src="images/gear_call.jpg" alt="Call of Duty Quartz Watch">
+      <h3>Call of Duty Quartz Watch</h3>
+      <p>₩159,000</p>
+    </a>
+
+  </div>
+
+  <a href="all.html" class="btn" style="margin-top:32px;">View All Products</a>
+</section>
+
+<!-- REVIEW SECTION -->
+<section class="review-gallery">
+  <div class="container">
+    <h2>Best REVIEW</h2>
+    <p class="review-sub">Real feedback from those who wear the field.</p>
+
+    <div class="review-row">
+      <div class="review-item">
+        <img src="images/review1.jpg" alt="Review 1">
+        <div class="review-overlay">
+          <p>실제로 보면 컬러감이 훨씬 멋집니다. 빈티지한 냄새까지 좋아요.</p>
+        </div>
+      </div>
+      <div class="review-item">
+        <img src="images/review2.jpg" alt="Review 2">
+        <div class="review-overlay">
+          <p>핏이 예쁘고, 원단 질감이 아주 탄탄합니다. 오래 입을 수 있을 것 같아요.</p>
+        </div>
+      </div>
+      <div class="review-item">
+        <img src="images/review3.jpg" alt="Review 3">
+        <div class="review-overlay">
+          <p>생각보다 훨씬 퀄리티가 좋네요. 사진보다 실물이 훨씬 고급스럽습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- BRAND IDENTITY SECTION -->
+<section class="brand-identity">
+  <h2>FIELD & CO. ESSENCE</h2>
+  <div class="identity-slider">
+    <div class="slide-track" id="brandTrack">
+      <img src="images/brand1.jpg" alt="Brand 1">
+      <img src="images/brand2.jpg" alt="Brand 2">
+      <img src="images/brand3.jpg" alt="Brand 3">
+      <img src="images/brand4.jpg" alt="Brand 4">
+      <img src="images/brand5.jpg" alt="Brand 5">
+    </div>
+  </div>
+</section>
+
+<script>
+  // 완전 seamless loop (JS 복제 방식)
+  const track = document.getElementById('brandTrack');
+  const clone = track.cloneNode(true);
+  track.parentNode.appendChild(clone);
+</script>
+
+
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 FIELD & CO. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <button class="close-btn" id="closePopup">&times;</button>
+    <img src="images/popup-vintage.png" alt="FIELD & CO." class="popup-img">
+    <div class="popup-content">
+      <h2>NEW SEASON COLLECTION</h2>
+      <p>Explore our latest vintage & military-inspired styles.</p>
+      <a href="all.html" class="btn">Shop Now</a>
+    </div>
+  </div>
+</div>
+</html>

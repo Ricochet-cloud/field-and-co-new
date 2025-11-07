@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cart — FIELD & CO.</title>
+<link rel="stylesheet" href="css/style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- 공지 배너 -->
+<div class="announcement-bar">
+  <div class="scroll-text">
+    🚚 Free shipping over ₩50,000 · 10% off for new members · Vintage outfit update now ✨
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="container">
+    <a class="nav-logo" href="index.html">
+      <img src="images/field-logo.png" alt="FIELD & CO. Logo" class="logo-img">
+    </a>
+    <nav class="nav-links">
+      <a href="all.html">All</a>
+      <a href="jacket.html">Jacket</a>
+      <a href="shirt.html">Shirt</a>
+      <a href="pants.html">Pants</a>
+      <a href="gear.html">Gear</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn"><img src="images/icon-cart.svg" alt="Cart"></a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="cart-section">
+    <h2>Shopping Cart</h2>
+    <p>담긴 상품을 확인하고 결제하세요.</p>
+
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-summary">
+      <p><strong>Total:</strong> <span id="cart-total">₩0</span></p>
+      <button id="checkout-btn" class="checkout-btn">결제하기</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 FIELD & CO. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// 장바구니 불러오기 (localStorage)
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+const cartContainer = document.getElementById('cart-items');
+const totalEl = document.getElementById('cart-total');
+
+if (cart.length === 0) {
+  cartContainer.innerHTML = "<p class='empty-cart'>장바구니가 비어 있습니다.</p>";
+} else {
+  let total = 0;
+  cart.forEach(item => {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'cart-item';
+    itemDiv.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" class="cart-img">
+      <div class="cart-info">
+        <h3>${item.name}</h3>
+        <p>${item.price}</p>
+        <button class="remove-btn" data-id="${item.id}">삭제</button>
+      </div>
+    `;
+    cartContainer.appendChild(itemDiv);
+    total += parseInt(item.price.replace(/[₩,]/g, ''));
+  });
+  totalEl.textContent = "₩" + total.toLocaleString();
+}
+
+// 상품 삭제 기능
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('remove-btn')) {
+    const id = e.target.dataset.id;
+    const updatedCart = cart.filter(item => item.id != id);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    location.reload();
+  }
+});
+
+// 결제하기 버튼
+document.getElementById('checkout-btn').addEventListener('click', () => {
+  alert('결제 페이지는 준비 중입니다.');
+});
+</script>
+
+</body>
+</html>

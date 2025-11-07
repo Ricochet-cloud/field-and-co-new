@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Product Detail — FIELD & CO.</title>
+<link rel="stylesheet" href="css/style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- 공지 배너 -->
+<div class="announcement-bar">
+  <div class="scroll-text">
+    🚚 Free shipping over ₩50,000 · 10% off for new members · Vintage outfit update now ✨
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="container">
+    <a class="nav-logo" href="index.html">
+      <img src="images/field-logo.png" alt="FIELD & CO. Logo" class="logo-img">
+    </a>
+    <nav class="nav-links">
+      <a href="all.html">All</a>
+      <a href="jacket.html">Jacket</a>
+      <a href="shirt.html">Shirt</a>
+      <a href="pants.html">Pants</a>
+      <a href="gear.html">Gear</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="search-btn"><img src="images/icon-search.svg" alt="search"></button>
+      <a href="cart.html" class="cart-btn"><img src="images/icon-cart.svg" alt="Cart"></a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section id="product-detail" class="product-detail"></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 FIELD & CO. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// ✅ 상품 데이터 (all.html과 동일하게 유지)
+const products = [
+  { id: 1, category: "jacket", name: "90s. taxi driver m65 jacket", price: "₩189,000", image: "images/jacket_taxi.jpg", description: "90년대 택시 드라이버 스타일의 빈티지 M-65 필드 자켓." },
+  { id: 2, category: "jacket", name: "70506 LEVIS DENIM JACKET", price: "₩79,000", image: "images/jacket_levise.jpg", description: "LEVIS의 70506 빈티지 데님 재킷." },
+  { id: 3, category: "shirt", name: "Polo Patchwork Shirt", price: "₩69,000", image: "images/shirt_patch.jpg", description: "폴로 랄프로렌의 패치워크 셔츠." },
+  { id: 4, category: "shirt", name: "HARLEY DAVIDSON BIKE PRINTING T-SHIRT", price: "₩49,000", image: "images/shirt_harley.jpg", description: "할리 데이비슨 프린팅 티셔츠." },
+  { id: 5, category: "pants", name: "POLO RALPH LAUREN BEIGE SLACKS", price: "₩69,000", image: "images/pants_slacks.jpg", description: "폴로 랄프로렌의 베이지 슬랙스." },
+  { id: 6, category: "pants", name: "LEVIS CAMO PATTERN PANTS", price: "₩89,000", image: "images/pants_denim.jpg", description: "리바이스 카모 패턴 팬츠." },
+  { id: 7, category: "gear", name: "Call of Duty Quartz Watch", price: "₩159,000", image: "images/gear_call.jpg", description: "콜 오브 듀티 콜라보 쿼츠 워치." },
+  { id: 8, category: "gear", name: "Wales Watch.works Quartz Watch", price: "₩59,000", image: "images/gear_wales.jpg", description: "웨일즈 워치웍스의 쿼츠 워치." }
+];
+
+// ✅ URL에서 id값 가져오기
+const params = new URLSearchParams(window.location.search);
+const productId = parseInt(params.get("id"));
+const product = products.find(p => p.id === productId);
+
+// ✅ 상품이 존재할 경우 렌더링
+const container = document.getElementById("product-detail");
+if (product) {
+  container.innerHTML = `
+    <div class="detail-layout">
+      <img src="${product.image}" alt="${product.name}" class="detail-img">
+      <div class="detail-info">
+        <h2>${product.name}</h2>
+        <p class="price">${product.price}</p>
+        <p class="desc">${product.description}</p>
+        <button id="add-to-cart" class="add-cart-btn">장바구니에 담기</button>
+      </div>
+    </div>
+  `;
+} else {
+  container.innerHTML = "<p>상품을 찾을 수 없습니다.</p>";
+}
+
+// ✅ 장바구니 담기 기능
+document.addEventListener("click", (e) => {
+  if (e.target.id === "add-to-cart") {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const exists = cart.some(item => item.id === product.id);
+
+    if (!exists) {
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("✅ 장바구니에 추가되었습니다!");
+    } else {
+      alert("이미 장바구니에 있는 상품입니다.");
+    }
+  }
+});
+</script>
+</body>
+</html>
