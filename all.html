@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>All Products — FIELD & CO.</title>
+<link rel="stylesheet" href="css/style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- 공지 배너 -->
+<div class="announcement-bar">
+  <div class="scroll-text">
+    🚚 Free shipping over ₩50,000 · 10% off for new members · Vintage outfit update now ✨
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="container">
+    <a class="nav-logo" href="index.html">
+      <img src="images/field-logo.png" alt="FIELD & CO. Logo" class="logo-img">
+    </a>
+
+    <nav class="nav-links">
+      <a href="all.html" class="active">All</a>
+      <a href="jacket.html">Jacket</a>
+      <a href="shirt.html">Shirt</a>
+      <a href="pants.html">Pants</a>
+      <a href="gear.html">Gear</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="search-btn">
+        <img src="images/icon-search.svg" alt="search" />
+      </button>
+      <a href="cart.html" class="cart-btn">
+        <img src="images/icon-cart.svg" alt="Cart" />
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="container all-products">
+    <h2>All Products</h2>
+    <p>빈티지 감성의 워크웨어와 밀리터리 웨어를 한눈에 만나보세요.</p>
+    <div class="products" id="product-list"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 FIELD & CO. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// 상품 데이터 (공용)
+const products = [
+  {
+    id: 1,
+    category: "jacket",
+    name: "90s. taxi driver m65 jacket",
+    price: "₩189,000",
+    image: "images/jacket_taxi.jpg",
+    description: "90년대 택시 드라이버 스타일의 빈티지 M-65 필드 자켓."
+  },
+  {
+    id: 2,
+    category: "jacket",
+    name: "70506 LEVIS DENIM JACKET",
+    price: "₩79,000",
+    image: "images/jacket_levise.jpg",
+    description: "LEVIS의 70506 빈티지 데님 재킷."
+  },
+  {
+    id: 3,
+    category: "shirt",
+    name: "Polo Patchwork Shirt",
+    price: "₩69,000",
+    image: "images/shirt_patch.jpg",
+    description: "폴로 랄프로렌의 패치워크 셔츠."
+  },
+  {
+    id: 4,
+    category: "shirt",
+    name: "HARLEY DAVIDSON BIKE PRINTING T-SHIRT",
+    price: "₩49,000",
+    image: "images/shirt_harley.jpg",
+    description: "할리 데이비슨 프린팅 티셔츠."
+  },
+  {
+    id: 5,
+    category: "pants",
+    name: "POLO RALPH LAUREN BEIGE SLACKS",
+    price: "₩69,000",
+    image: "images/pants_slacks.jpg",
+    description: "폴로 랄프로렌의 베이지 슬랙스."
+  },
+  {
+    id: 6,
+    category: "pants",
+    name: "LEVIS CAMO PATTERN PANTS",
+    price: "₩89,000",
+    image: "images/pants_denim.jpg",
+    description: "리바이스 카모 패턴 팬츠."
+  },
+  {
+    id: 7,
+    category: "gear",
+    name: "Call of Duty Quartz Watch",
+    price: "₩159,000",
+    image: "images/gear_call.jpg",
+    description: "콜 오브 듀티 콜라보 쿼츠 워치."
+  },
+  {
+    id: 8,
+    category: "gear",
+    name: "Wales Watch.works Quartz Watch",
+    price: "₩59,000",
+    image: "images/gear_wales.jpg",
+    description: "웨일즈 워치웍스의 쿼츠 워치."
+  }
+];
+
+// 상품 목록 출력
+const container = document.getElementById('product-list');
+products.forEach(product => {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <a href="product-detail.html?id=${product.id}">
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.price}</p>
+    </a>
+  `;
+  container.appendChild(card);
+});
+</script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
